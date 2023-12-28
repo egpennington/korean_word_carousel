@@ -1,0 +1,84 @@
+:root {
+    --Korean-blue: #0F64CD;
+    --Korean-red: #CD2E3A;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 2px #333; 
+  line-height: 1.4;
+}
+
+@keyframes changeLetter {
+  0% {
+    content: "한국";
+  }
+  20% {
+    color: var(--Korean-red);
+  }
+  40% {
+     content: "서울";
+  }
+  60% {
+    color: var(--Korean-blue);
+  }
+  80% {
+    content: "부산";
+  }
+  100% {
+    content: "제주도";
+  }
+}
+
+iframe {
+  position: relative;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #333;
+  z-index: 2;
+  background: #fff;
+  opacity: 0.55;
+  border-radius: 8px;
+}
+
+.element::before {
+  display: absolute;
+  top: 50%;
+  content: "사랑해";
+  font-weight: bold;
+  font-size: 3rem;
+  padding: 10px 20px;
+}
+
+.element::after {
+    animation: changeLetter 7s linear infinite alternate;
+    display: inline-block;
+    content: "한국";
+    font-size: 80px;
+}
+
+@media(max-width: 405px) {
+  .element::before {
+      font-size: 1.4rem;
+  }
+
+  .element::after {
+    font-size: 2.5rem;
+  }
+}
